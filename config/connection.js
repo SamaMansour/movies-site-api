@@ -10,5 +10,5 @@ module.exports.connect = (uri) => {
     process.exit(1);
   });
 
-  require('../models/user');
+  require('../models/User');
 };

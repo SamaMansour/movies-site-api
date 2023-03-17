@@ -3,19 +3,24 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const colors = require('colors');
 const path = require('path');
+const dotenv = require('dotenv');
+const cors = require('cors');
 const PORT = 1337;
 const connectDB =require("./config/connection");
 const localSignupStrategy = require('./passport/local-signup');
 const localLoginStrategy = require('./passport/local-login');
-const authCheckMiddleware = require('./middleware/auth-check');
-const authRoutes = require('./server/routes/auth');
+// const authCheckMiddleware = require('./middleware/auth-check');
+const authRoutes = require('./routes/auth');
 const db = require('./config/connection');
 
 
 
 dotenv.config( { path : '.env'} )
 db.connect('mongodb://localhost/movies');
-require('./models/user');
+
+// var mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost/movies');
+// require('./models/user');
 const app = express();
 
 app.use(express.json());
@@ -24,10 +29,10 @@ app.use(passport.initialize());
 
 
 
-passport.use('local-signup', localSignupStrategy);
-passport.use('local-login', localLoginStrategy);
+ passport.use('local-signup', localSignupStrategy);
+ passport.use('local-login', localLoginStrategy);
 
-app.use('/api', authCheckMiddleware);
+// app.use('/api', authCheckMiddleware);
 
 
 
