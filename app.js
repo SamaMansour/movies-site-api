@@ -9,8 +9,8 @@ const PORT = 1337;
 const connectDB =require("./config/connection");
 const localSignupStrategy = require('./passport/local-signup');
 const localLoginStrategy = require('./passport/local-login');
-// const authCheckMiddleware = require('./middleware/auth-check');
 const authRoutes = require('./routes/auth');
+const favouriteRoute = require('./routes/favourite');
 const db = require('./config/connection');
 
 
@@ -32,11 +32,12 @@ app.use(passport.initialize());
  passport.use('local-signup', localSignupStrategy);
  passport.use('local-login', localLoginStrategy);
 
-// app.use('/api', authCheckMiddleware);
 
 
 
 app.use('/auth', authRoutes);
+app.use("/favourites", favouriteRoute);
+
 
 
 app.use((req, res, next) => {

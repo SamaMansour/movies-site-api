@@ -1,3 +1,4 @@
+require("../models/User");
 const jwt = require('jsonwebtoken');
 const User = require('mongoose').model('User');
 const dotenv = require('dotenv');
@@ -5,7 +6,7 @@ const dotenv = require('dotenv');
 
 
 
-module.exports = (req, res, next) => {
+const auth = (req, res, next) => {
   dotenv.config( { path : '.env'} );
 
   if (!req.headers.authorization) {
@@ -28,3 +29,5 @@ module.exports = (req, res, next) => {
     });
   });
 };
+
+module.exports = auth;
