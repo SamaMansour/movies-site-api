@@ -14,10 +14,6 @@ const FavouriteSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  posterPath: {
-    type: String,
-    required: true
-  }
 })
 
 

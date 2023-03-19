@@ -82,10 +82,7 @@ router.post('/signup', (req, res, next) => {
         });
       }
 
-      return res.status(400).json({
-        success: false,
-        message: 'Could not process the form.'
-      });
+      
     }
 
     return res.status(200).json({
@@ -114,11 +111,6 @@ router.post('/login', (req, res, next) => {
           message: err.message
         });
       }
-
-      return res.status(400).json({
-        success: false,
-        message: 'Could not process the form.'
-      });
     }
 
 
@@ -128,6 +120,7 @@ router.post('/login', (req, res, next) => {
       token,
       user: userData
     });
+    console.log(token);
   })(req, res, next);
 });
 

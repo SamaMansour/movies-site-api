@@ -10,8 +10,8 @@ router.post("/", auth, async(req, res)=>{
   const favouriteRequest = {
     user,
     title: req.body.title, 
-    overview: req.body.overview,
-    posterPath: req.body.posterPath
+    overview: req.body.overview
+   
   }
 
   const favourite = await Favourite.create(favouriteRequest)
@@ -19,7 +19,7 @@ router.post("/", auth, async(req, res)=>{
   user.favourites.push(favourite)
   await user.save()
 
-  res.send("OK")
+  res.send("OK");
 });
 
 
