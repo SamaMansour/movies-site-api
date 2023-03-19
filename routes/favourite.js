@@ -23,5 +23,21 @@ router.post("/", auth, async(req, res)=>{
 });
 
 
+router.get("/:userId",  async (req, res) =>{
+  try {
+    const user = await User.findById(req.params.userId);
+    if (user._id == req.user._id) res.status(401).send("not authorized");
+
+    const favourites = user.favourites;
+
+    res.send(favourites)
+    } catch (error) {
+    console.log(error.message)
+  }
+
+  
+});
+
+
 
 module.exports = router;
