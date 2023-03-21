@@ -8,13 +8,17 @@ const FavouriteSchema = new mongoose.Schema({
   },
   title: {
     type: String,
-    required: true
+    
   },
   overview: { 
     type: String,
-    required: true
+   
+  },
+  posterPath: { 
+    type: String,
+   
   },
 })
 
-
+FavouriteSchema.plugin(require("mongoose-autopopulate"));
 module.exports = mongoose.model("Favourite", FavouriteSchema)

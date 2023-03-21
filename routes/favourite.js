@@ -4,13 +4,14 @@ const User = require("../models/User");
 const Favourite = require("../models/favourite");
 
 
-router.post("/", auth, async(req, res)=>{
+router.post("/",async(req, res)=>{
   const user = await User.findById(req.body.userId);
 
   const favouriteRequest = {
     user,
     title: req.body.title, 
-    overview: req.body.overview
+    overview: req.body.overview,
+    posterPath: req.body.posterPath
    
   }
 
@@ -23,14 +24,17 @@ router.post("/", auth, async(req, res)=>{
 });
 
 
-router.get("/:userId",  async (req, res) =>{
+router.get("/:Id", async (req, res) =>{
   try {
-    const user = await User.findById(req.params.userId);
-    if (user._id == req.user._id) res.status(401).send("not authorized");
+    const user = await User.findById(req.params.Id);
+    //if (user._id == req.user._id) res.status(401).send("not authorized");
 
     const favourites = user.favourites;
+    const records = await Favourite.find().where('_id').in(favourites).exec();
 
-    res.send(favourites)
+    
+
+    res.send(records);
     } catch (error) {
     console.log(error.message)
   }

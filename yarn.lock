@@ -537,6 +537,11 @@ mongodb@5.1.0:
   optionalDependencies:
     saslprep "^1.0.3"
 
+mongoose-autopopulate@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/mongoose-autopopulate/-/mongoose-autopopulate-1.0.0.tgz#04a41d6efac26ae0b61d0d662ab4e9e9f986ea79"
+  integrity sha512-VWsGb4VqSFqWgS6a7zFTOuUr2+XArrThtX7fjUlzIMPowVxvuS1Zeiif7D0DgXIETLNc+B/0r84kV5A2B7w2UQ==
+
 mongoose@^7.0.2:
   version "7.0.2"
   resolved "https://registry.npmjs.org/mongoose/-/mongoose-7.0.2.tgz#679df6bae18abb7a27f412c4e9e7285363cd07eb"

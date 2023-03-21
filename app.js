@@ -29,14 +29,13 @@ app.use(passport.initialize());
 
 
 
- passport.use('local-signup', localSignupStrategy);
- passport.use('local-login', localLoginStrategy);
+passport.use('local-signup', localSignupStrategy);
+passport.use('local-login', localLoginStrategy);
 
 
 
 
-app.use('/auth', authRoutes);
-app.use("/favourites", favouriteRoute);
+
 
 
 
@@ -57,6 +56,9 @@ const corsOptions ={
   optionSuccessStatus:200
 }
 app.use(cors(corsOptions));
+
+app.use('/auth', authRoutes);
+app.use("/favourites", favouriteRoute);
 
 
 
